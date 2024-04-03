@@ -1,0 +1,24 @@
+<!-- templates/home.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center mt-8">
+    <h1 class="text-3xl font-bold mb-4">Welcome to Event Management System</h1>
+    <p class="text-lg text-gray-700 mb-8">Plan, manage, and track your events effortlessly</p>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4"> {# Adjusted to display 4 events per row for large screens #}
+        {% for event in events %}
+        <div class="bg-white rounded-lg shadow-md p-4">
+            <img src="{{ event.Event_Image.url }}" alt="{{ event.Event_name }}" class="object-cover rounded-t-lg mb-4" style="width: 100%; height: auto;">
+
+            <h2 class="text-xl font-bold mb-2">{{ event.Event_name }}</h2>
+            <p class="text-gray-700 mb-2"><strong>Venue:</strong> {{ event.Event_Venue }} </p>
+            <p class="text-gray-700 mb-2"><strong>Description:</strong> {{ event.Event_Description }} </p>
+            <p class="text-gray-700 mb-2"><strong>Start:</strong> {{ event.Event_start_date_time }} </p>
+            <p class="text-gray-700 mb-4"><strong>End:</strong> {{ event.Event_end_date_time }}</p>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Apply</button>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
